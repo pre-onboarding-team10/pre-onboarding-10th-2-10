@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import SearchInput from '../components/SearchInput';
 import SearchResult from '../components/SearchResult';
 import axios from 'axios';
-import '../style/SearchPage.css';
 
 const SearchPage = () => {
   const mockData = [
@@ -107,17 +106,25 @@ const SearchPage = () => {
 
   return (
     <>
-      <h1>국내 모든 임상시험 검색하고 온라인으로 참여하기</h1>
-      <SearchInput
-        value={query}
-        onChangeSearchInput={handleChangeInput}
-        onKeyDown={handleKeyDown}
-      />
-      <button>검색</button>
-      <SearchResult
-        searchResults={searchResults}
-        selectedResultIndex={selectedResultIndex}
-      />
+      <div className="search-form">
+        <div className="search-form__header">
+          <h1>국내 모든 임상시험 검색하고 온라인으로 참여하기</h1>
+        </div>
+        <div className="search-form__input-bar">
+          <SearchInput
+            value={query}
+            onChangeSearchInput={handleChangeInput}
+            onKeyDown={handleKeyDown}
+          />
+          <button>검색</button>
+        </div>
+        <div className="search-form__result">
+          <SearchResult
+            searchResults={searchResults}
+            selectedResultIndex={selectedResultIndex}
+          />
+        </div>
+      </div>
     </>
   );
 };

@@ -2,18 +2,15 @@ body {
   margin: 0;
   padding: 0;
 }
-
 button {
   cursor: pointer;
 }
-
 ul,
 li {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-
 .search-form {
   display: flex;
   flex-direction: column;
@@ -21,25 +18,21 @@ li {
   align-self: center;
   background-color: aquamarine;
 }
-
 .search-form__header {
   display: flex;
   justify-content: center;
   background-color: beige;
 }
-
 .search-form__input-bar {
   display: flex;
   justify-content: center;
   background-color: cadetblue;
 }
-
 .search-form__result {
   display: flex;
   justify-content: center;
   background-color: pink;
 }
-
 .selected {
   background-color: yellowgreen;
 }

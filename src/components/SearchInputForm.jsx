@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react';
 import { useArrowKeyFocus } from '../hooks/useArrowKeyFocus';
+import { SearchWordItem } from './SearchWordItem';
 
 export const SearchInputForm = () => {
   const [focus, setFocus] = useArrowKeyFocus(3);
@@ -17,23 +17,5 @@ export const SearchInputForm = () => {
         <SearchWordItem focus={focus === 2} setFocus={() => setFocus(2)} />
       </ul>
     </div>
-  );
-};
-
-const SearchWordItem = ({ focus, setFocus }) => {
-  const ref = useRef(null);
-
-  useEffect(() => {
-    if (focus) {
-      ref.current.focus();
-    }
-  }, [focus]);
-
-  return (
-    <li>
-      <button ref={ref} onClick={setFocus}>
-        간세포암
-      </button>
-    </li>
   );
 };

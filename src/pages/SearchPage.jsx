@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import SearchInput from '../components/SearchInput';
 import SearchResult from '../components/SearchResult';
-import axios from 'axios';
 import { getSearchResults } from '../api/utils';
 
 const SearchPage = () => {

@@ -1,5 +1,3 @@
-import React from 'react';
-
 const SearchResult = ({ searchResults, selectedResultIndex }) => {
   return (
     <>

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import SearchInput from '../components/SearchInput';
 import SearchResult from '../components/SearchResult';
 import { getSearchResults } from '../api/utils';
+import useKeyDown from '../hooks/useKeyDown';
 
 const SearchPage = () => {
   const mockData = [
@@ -72,21 +73,13 @@ const SearchPage = () => {
   ];
   const mockDataNolength = [];
   const [query, setQuery] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
-  const [selectedResultIndex, setSelectedResultIndex] = useState(-1);
+  const [searchResults, setSearchResults] = useState(mockData);
+  const { selectedResultIndex, setSelectedResultIndex, handleKeyDown } =
+    useKeyDown();
+
   const handleChangeInput = (e) => {
     setQuery(e.target.value);
     setSelectedResultIndex(-1);
-  };
-  const handleKeyDown = (e) => {
-    if (
-      e.key === 'ArrowDown' &&
-      selectedResultIndex < searchResults.length - 1
-    ) {
-      setSelectedResultIndex(selectedResultIndex + 1);
-    } else if (e.key === 'ArrowUp' && selectedResultIndex > -1) {
-      setSelectedResultIndex(selectedResultIndex - 1);
-    }
   };
 
   useEffect(() => {
@@ -110,7 +103,7 @@ const SearchPage = () => {
           <SearchInput
             value={query}
             onChangeSearchInput={handleChangeInput}
-            onKeyDown={handleKeyDown}
+            onKeyDown={(e) => handleKeyDown(e, searchResults)}
           />
           <button>검색</button>
         </div>

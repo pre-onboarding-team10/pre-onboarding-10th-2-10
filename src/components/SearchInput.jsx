@@ -1,16 +1,11 @@
-import { useState } from 'react';
-
-const SearchInput = () => {
-  const [value, setValue] = useState('');
-  const handleChangeInput = (e) => {
-    setValue(e.target.value);
-  };
+const SearchInput = ({ value, onChangeSearchInput, onKeyDown }) => {
   return (
     <div>
       <input
         placeholder="질환명을 입력해주세요"
         value={value}
-        onChange={handleChangeInput}
+        onChange={onChangeSearchInput}
+        onKeyDown={onKeyDown}
       />
     </div>
   );

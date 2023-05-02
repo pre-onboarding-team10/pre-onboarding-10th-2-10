@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import SearchInput from '../components/SearchInput';
-import Result from '../components/Result';
+import SearchResult from '../components/SearchResult';
+import axios from 'axios';
+import '../style/SearchPage.css';
 
 const SearchPage = () => {
   const mockData = [
@@ -70,12 +72,52 @@ const SearchPage = () => {
     },
   ];
   const mockDataNolength = [];
+  const [query, setQuery] = useState('');
+  const [searchResults, setSearchResults] = useState(mockData);
+  const [selectedResultIndex, setSelectedResultIndex] = useState(-1);
+  const handleChangeInput = (e) => {
+    setQuery(e.target.value);
+    setSelectedResultIndex(-1);
+  };
+  const handleKeyDown = (e) => {
+    if (
+      e.key === 'ArrowDown' &&
+      selectedResultIndex < searchResults.length - 1
+    ) {
+      setSelectedResultIndex(selectedResultIndex + 1);
+    } else if (e.key === 'ArrowUp' && selectedResultIndex > -1) {
+      setSelectedResultIndex(selectedResultIndex - 1);
+    }
+  };
+
+  console.log(selectedResultIndex);
+
+  // useEffect(() => {
+  //   const fetch = async () => {
+  //     if (query) {
+  //       const response = await axios.get(
+  //         `https://api.clinicaltrialskorea.com/api/v1/search-conditions/?name=${query}`
+  //       );
+  //       setSearchResults(response.data);
+  //     }
+  //   };
+
+  //   fetch();
+  // }, [query]);
+
   return (
     <>
       <h1>국내 모든 임상시험 검색하고 온라인으로 참여하기</h1>
-      <SearchInput />
+      <SearchInput
+        value={query}
+        onChangeSearchInput={handleChangeInput}
+        onKeyDown={handleKeyDown}
+      />
       <button>검색</button>
-      <Result data={mockData} />
+      <SearchResult
+        searchResults={searchResults}
+        selectedResultIndex={selectedResultIndex}
+      />
     </>
   );
 };

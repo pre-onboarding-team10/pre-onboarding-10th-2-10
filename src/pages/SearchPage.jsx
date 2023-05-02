@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import SearchInput from '../components/SearchInput';
 import SearchResult from '../components/SearchResult';
 import axios from 'axios';
+import { getSearchResults } from '../api/utils';
 
 const SearchPage = () => {
   const mockData = [
@@ -72,7 +73,7 @@ const SearchPage = () => {
   ];
   const mockDataNolength = [];
   const [query, setQuery] = useState('');
-  const [searchResults, setSearchResults] = useState(mockData);
+  const [searchResults, setSearchResults] = useState([]);
   const [selectedResultIndex, setSelectedResultIndex] = useState(-1);
   const handleChangeInput = (e) => {
     setQuery(e.target.value);
@@ -90,16 +91,14 @@ const SearchPage = () => {
   };
 
   useEffect(() => {
-    const fetch = async () => {
+    const fetchSearchResults = async () => {
       if (query) {
-        const response = await axios.get(
-          `https://api.clinicaltrialskorea.com/api/v1/search-conditions/?name=${query}`
-        );
-        setSearchResults(response.data);
+        const results = await getSearchResults(query);
+        setSearchResults(results);
       }
     };
 
-    fetch();
+    fetchSearchResults();
   }, [query]);
 
   return (

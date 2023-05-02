@@ -1,5 +1,11 @@
+import SearchBar from './components/SearchBar';
+
 const App = () => {
-  return <div className="App">Template</div>;
+  return (
+    <div className="App">
+      <SearchBar />
+    </div>
+  );
 };
 
 export default App;

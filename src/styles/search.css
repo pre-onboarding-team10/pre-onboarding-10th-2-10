@@ -1,0 +1,10 @@
+.keywordItem {
+  width: 15rem;
+  cursor: pointer;
+  background-color: white;
+}
+
+.keywordItem:hover,
+.focus {
+  background-color: rgb(241, 241, 241);
+}

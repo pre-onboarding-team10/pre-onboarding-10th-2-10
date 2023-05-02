@@ -1,13 +1,10 @@
-import { useEffect, useState } from 'react';
 import SearchInput from '../components/SearchInput';
 import SearchResult from '../components/SearchResult';
-import { getSearchResults } from '../api/utils';
 import useKeyDown from '../hooks/useKeyDown';
 import useFetchResults from '../hooks/useFetchResults';
 
 const SearchPage = () => {
-  const { selectedResultIndex, setSelectedResultIndex, handleKeyDown } =
-    useKeyDown();
+  const { selectedResultIndex, handleKeyDown } = useKeyDown();
   const { query, searchResults, handleChangeInput } = useFetchResults();
 
   return (

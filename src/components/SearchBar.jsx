@@ -4,7 +4,7 @@ import KeywordList from './KeywordList';
 import useKeyDown from '../hooks/useKeyDown';
 
 const SearchBar = () => {
-  const { keywordList, handleChange, handleSearch } = useSearch();
+  const { keyword, keywordList, handleChange, handleSearch } = useSearch();
   const { focusIdx, handleKeyDown } = useKeyDown(keywordList);
   return (
     <>
@@ -17,7 +17,11 @@ const SearchBar = () => {
         />
         <button onClick={handleSearch}>검색</button>
       </div>
-      <KeywordList keywordList={keywordList} focusIdx={focusIdx} />
+      <KeywordList
+        keywordList={keywordList}
+        keyword={keyword}
+        focusIdx={focusIdx}
+      />
     </>
   );
 };

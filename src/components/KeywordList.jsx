@@ -2,11 +2,15 @@ import React from 'react';
 import KeywordItem from './KeywordItem';
 import { MAX_NUM } from '../constant';
 
-const KeywordList = ({ keywordList, focusIdx }) => {
+const KeywordList = ({ keywordList, keyword, focusIdx }) => {
   return (
     <div className="keywordList">
       <div className="keywordList-title">
-        {keywordList.length > 0 ? '추천 검색어' : '검색어 없음'}
+        {keywordList.length > 0
+          ? '추천 검색어'
+          : keyword !== ''
+          ? '검색어 없음'
+          : null}
       </div>
       {keywordList.length > 0 &&
         keywordList

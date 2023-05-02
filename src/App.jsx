@@ -1,9 +1,9 @@
-import SearchBar from './components/SearchBar';
+import SearchPage from './pages/SearchPage';
 
 const App = () => {
   return (
     <div className="App">
-      <SearchBar />
+      <SearchPage />
     </div>
   );
 };

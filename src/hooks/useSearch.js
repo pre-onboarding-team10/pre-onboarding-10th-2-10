@@ -16,9 +16,11 @@ const useSearch = () => {
 
   useEffect(() => {
     if (keyword !== '') handleSearch();
+    else setKeywordList([]);
   }, [keyword, handleSearch]);
 
   return {
+    keyword,
     keywordList,
     handleChange,
     handleSearch,

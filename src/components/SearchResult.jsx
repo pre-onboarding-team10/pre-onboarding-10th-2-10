@@ -4,12 +4,13 @@ const SearchResult = ({ searchResults, selectedResultIndex }) => {
   return (
     <>
       <ul>
+        <span>추천 검색어</span>
         {searchResults?.length ? (
           searchResults.map((result, index) => {
             return (
               <>
-                {/* <div>돋보기</div> */}
                 <li
+                  key={result.id}
                   className={
                     index === selectedResultIndex ? 'selected' : 'none'
                   }

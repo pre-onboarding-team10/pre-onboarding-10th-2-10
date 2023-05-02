@@ -89,20 +89,18 @@ const SearchPage = () => {
     }
   };
 
-  console.log(selectedResultIndex);
+  useEffect(() => {
+    const fetch = async () => {
+      if (query) {
+        const response = await axios.get(
+          `https://api.clinicaltrialskorea.com/api/v1/search-conditions/?name=${query}`
+        );
+        setSearchResults(response.data);
+      }
+    };
 
-  // useEffect(() => {
-  //   const fetch = async () => {
-  //     if (query) {
-  //       const response = await axios.get(
-  //         `https://api.clinicaltrialskorea.com/api/v1/search-conditions/?name=${query}`
-  //       );
-  //       setSearchResults(response.data);
-  //     }
-  //   };
-
-  //   fetch();
-  // }, [query]);
+    fetch();
+  }, [query]);
 
   return (
     <>

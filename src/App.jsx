@@ -1,5 +1,11 @@
+import SearchPage from './pages/SearchPage';
+
 const App = () => {
-  return <div className="App">Preonboarding Week2</div>;
+  return (
+    <>
+      <SearchPage />
+    </>
+  );
 };
 
 export default App;

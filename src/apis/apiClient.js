@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+const BASE_URL = 'https://api.clinicaltrialskorea.com/';
+const API_VERSION = 'api/v1/';
 class ApiClient {
   #options = {};
 
@@ -33,11 +35,35 @@ class ApiClient {
     return await this.#request('GET', path);
   }
 
-  async getKeyword(keyword) {
-    return await this.#get(`?name=${keyword}`);
+  async getCachedKeywords(keyword) {
+    const URL = `${BASE_URL}${API_VERSION}search-conditions/?name=${keyword}`;
+    const cacheStorage = await caches.open('keyword');
+    const responseCache = await cacheStorage.match(URL);
+
+    try {
+      if (responseCache) return await responseCache.json();
+      else {
+        const { data, status, statusText, headers } = await this.getKeywords(
+          keyword
+        );
+        const fetchResponse = new Response(JSON.stringify(data), {
+          status,
+          statusText,
+          headers,
+        });
+        await cacheStorage.put(URL, fetchResponse);
+        return data;
+      }
+    } catch (err) {
+      alert(err);
+    }
+  }
+
+  async getKeywords(keyword) {
+    return await this.#get(`search-conditions/?name=${keyword}`);
   }
 }
 
 export const apiClient = new ApiClient({
-  HOST: 'https://api.clinicaltrialskorea.com/api/v1/search-conditions/',
+  HOST: API_VERSION,
 });

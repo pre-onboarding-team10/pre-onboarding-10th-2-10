@@ -7,8 +7,8 @@ const useKeywordSuggestion = (keyword) => {
   const fetchSuggestions = useCallback(async () => {
     try {
       if (keyword) {
-        const response = await apiClient.getKeyword(keyword);
-        setSuggestions(response.data);
+        const response = await apiClient.getCachedKeywords(keyword);
+        setSuggestions(response);
       } else {
         setSuggestions([]);
       }

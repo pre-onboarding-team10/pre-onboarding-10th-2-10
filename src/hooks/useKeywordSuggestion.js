@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { apiClient } from '../apis/apiClient';
+import { apiCache } from '../apis/apiCache';
 
 const useKeywordSuggestion = (keyword) => {
   const [suggestions, setSuggestions] = useState([]);
@@ -7,8 +7,8 @@ const useKeywordSuggestion = (keyword) => {
   const fetchSuggestions = useCallback(async () => {
     try {
       if (keyword) {
-        const response = await apiClient.getKeyword(keyword);
-        setSuggestions(response.data);
+        const response = await apiCache.getCacheStorage(keyword);
+        setSuggestions(response);
       } else {
         setSuggestions([]);
       }

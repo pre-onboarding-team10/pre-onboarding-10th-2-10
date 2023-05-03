@@ -34,6 +34,7 @@ class ApiClient {
   }
 
   async getKeyword(keyword) {
+    console.info('calling api');
     return await this.#get(`?name=${keyword}`);
   }
 }

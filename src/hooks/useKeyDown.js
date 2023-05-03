@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { MAX_NUM } from '../constant';
 
 const useKeyDown = (keywordList) => {
@@ -15,6 +15,10 @@ const useKeyDown = (keywordList) => {
       setFocusIdx((prev) => (prev - 1) % keywordLength);
     }
   };
+
+  useEffect(() => {
+    setFocusIdx(-1);
+  }, [keywordList]);
 
   return {
     focusIdx,

@@ -18,9 +18,21 @@ const SearchWordList = () => {
 
   return (
     <ul>
-      <SearchWordItem focus={focus === 0} setFocus={() => setFocus(0)} />
-      <SearchWordItem focus={focus === 1} setFocus={() => setFocus(1)} />
-      <SearchWordItem focus={focus === 2} setFocus={() => setFocus(2)} />
+      <SearchWordItem
+        word={'간세포암1'}
+        focus={focus === 0}
+        setFocus={() => setFocus(0)}
+      />
+      <SearchWordItem
+        word={'간세포암2'}
+        focus={focus === 1}
+        setFocus={() => setFocus(1)}
+      />
+      <SearchWordItem
+        word={'간세포암3'}
+        focus={focus === 2}
+        setFocus={() => setFocus(2)}
+      />
     </ul>
   );
 };

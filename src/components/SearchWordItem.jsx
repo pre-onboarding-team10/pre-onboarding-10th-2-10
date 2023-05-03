@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-export const SearchWordItem = ({ focus, setFocus }) => {
+export const SearchWordItem = ({ word, focus, setFocus }) => {
   const buttonRef = useRef(null);
 
   useEffect(() => {
@@ -12,7 +12,7 @@ export const SearchWordItem = ({ focus, setFocus }) => {
   return (
     <li>
       <button ref={buttonRef} onClick={setFocus}>
-        간세포암
+        {word}
       </button>
     </li>
   );

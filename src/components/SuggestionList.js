@@ -1,4 +1,5 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
+import SuggestionItem from './SuggestionItem';
 
 const SuggestionList = ({ suggestions, focusedIndex, setFocusedIndex }) => {
   const suggestionListRef = useRef(null);
@@ -6,13 +7,13 @@ const SuggestionList = ({ suggestions, focusedIndex, setFocusedIndex }) => {
   return (
     <ul ref={suggestionListRef}>
       {suggestions.map((suggestion, index) => (
-        <li
+        <SuggestionItem
           key={index}
-          style={index === focusedIndex ? { backgroundColor: '#ccc' } : {}}
-          onClick={() => setFocusedIndex(index)}
-        >
-          {suggestion.name}
-        </li>
+          index={index}
+          focusedIndex={focusedIndex}
+          setFocusedIndex={setFocusedIndex}
+          name={suggestion.name}
+        />
       ))}
     </ul>
   );

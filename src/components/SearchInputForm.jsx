@@ -1,9 +1,27 @@
-import { useState } from 'react';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { useArrowKeyFocus } from '../hooks/useArrowKeyFocus';
 import { SearchWordItem } from './SearchWordItem';
 
 export const SearchInputForm = () => {
   const [value, setValue] = useState('');
+
+  const [recommendationWords, setRecoomendationWoard] = useState();
+
+  const fetchRecommendationWords = async () => {
+    if (value.length > 0) {
+      const { data } = await axios.get(
+        `/api/v1/search-conditions/?name=${value}`
+      );
+      setRecoomendationWoard(data);
+    } else {
+      setRecoomendationWoard(undefined);
+    }
+  };
+
+  useEffect(() => {
+    fetchRecommendationWords();
+  }, [value]);
 
   return (
     <div>
@@ -15,31 +33,26 @@ export const SearchInputForm = () => {
         />
         <button type="submit">submit</button>
       </div>
-      <SearchWordList />
+      {recommendationWords ? (
+        <SearchWordList searchWords={recommendationWords} />
+      ) : null}
     </div>
   );
 };
 
-const SearchWordList = () => {
-  const [focus, setFocus] = useArrowKeyFocus(3);
+const SearchWordList = ({ searchWords }) => {
+  const [focus, setFocus] = useArrowKeyFocus(searchWords.length);
 
   return (
     <ul>
-      <SearchWordItem
-        word={'간세포암1'}
-        focus={focus === 0}
-        setFocus={() => setFocus(0)}
-      />
-      <SearchWordItem
-        word={'간세포암2'}
-        focus={focus === 1}
-        setFocus={() => setFocus(1)}
-      />
-      <SearchWordItem
-        word={'간세포암3'}
-        focus={focus === 2}
-        setFocus={() => setFocus(2)}
-      />
+      {searchWords.map((searchWord, i) => (
+        <SearchWordItem
+          key={searchWord.id}
+          word={searchWord.name}
+          focus={focus === i}
+          setFocus={() => setFocus(i)}
+        />
+      ))}
     </ul>
   );
 };

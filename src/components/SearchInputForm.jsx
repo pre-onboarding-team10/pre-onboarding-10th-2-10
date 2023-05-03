@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useSearch } from '../hooks/useSearch';
-import { SearchWordList } from './SearchWordList';
 import { SearchInput } from './SearchInput';
+import { SearchWordList } from './SearchWordList';
 
 export const SearchInputForm = () => {
   const [value, setValue] = useState('');

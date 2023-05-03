@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { SearchWordList } from './SearchWordList';
 import { useSearch } from '../hooks/useSearch';
+import { SearchWordList } from './SearchWordList';
+import { SearchInput } from './SearchInput';
 
 export const SearchInputForm = () => {
   const [value, setValue] = useState('');
@@ -9,14 +10,7 @@ export const SearchInputForm = () => {
 
   return (
     <div>
-      <div>
-        <input
-          type="search"
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-        />
-        <button type="submit">submit</button>
-      </div>
+      <SearchInput value={value} onChange={(e) => setValue(e.target.value)} />
       {recommendationWords ? (
         <SearchWordList searchWords={recommendationWords} />
       ) : null}

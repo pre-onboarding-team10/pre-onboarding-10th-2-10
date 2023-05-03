@@ -9,6 +9,10 @@ export const SearchWordItem = ({ word, focus, setFocus }) => {
     }
   }, [focus]);
 
+  useEffect(() => {
+    setFocus(undefined);
+  }, [word]);
+
   return (
     <li>
       <button ref={buttonRef} onClick={setFocus}>

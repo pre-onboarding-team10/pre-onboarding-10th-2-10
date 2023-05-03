@@ -5,22 +5,7 @@ import { SearchWordList } from './SearchWordList';
 export const SearchInputForm = () => {
   const [value, setValue] = useState('');
 
-  const [recommendationWords, setRecoomendationWoard] = useState();
-
-  const fetchRecommendationWords = async () => {
-    if (value.length > 0) {
-      const { data } = await axios.get(
-        `/api/v1/search-conditions/?name=${value}`
-      );
-      setRecoomendationWoard(data);
-    } else {
-      setRecoomendationWoard(undefined);
-    }
-  };
-
-  useEffect(() => {
-    fetchRecommendationWords();
-  }, [value]);
+  const { recommendationWords } = useSearch(value);
 
   return (
     <div>
@@ -37,4 +22,27 @@ export const SearchInputForm = () => {
       ) : null}
     </div>
   );
+};
+
+const useSearch = (word) => {
+  const [recommendationWords, setRecoomendationWoard] = useState();
+
+  const fetchRecommendationWords = async () => {
+    if (word.length > 0) {
+      const { data } = await axios.get(
+        `/api/v1/search-conditions/?name=${value}`
+      );
+      setRecoomendationWoard(data);
+    } else {
+      setRecoomendationWoard([]);
+    }
+  };
+
+  useEffect(() => {
+    fetchRecommendationWords();
+  }, [value]);
+
+  return {
+    recommendationWords,
+  };
 };

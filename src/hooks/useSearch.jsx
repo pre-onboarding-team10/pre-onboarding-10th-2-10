@@ -7,7 +7,7 @@ export const useSearch = (word) => {
   const fetchRecommendationWords = async () => {
     if (word.length > 0) {
       const { data } = await axios.get(
-        `/api/v1/search-conditions/?name=${value}`
+        `/api/v1/search-conditions/?name=${word}`
       );
       setRecoomendationWoard(data);
     } else {
@@ -17,7 +17,7 @@ export const useSearch = (word) => {
 
   useEffect(() => {
     fetchRecommendationWords();
-  }, [value]);
+  }, [word]);
 
   return {
     recommendationWords,

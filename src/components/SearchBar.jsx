@@ -1,4 +1,5 @@
 import { getKeywords } from '../apis/searchApi';
+import { SEARCH, SEARCH_PLACEHOLDER } from '../constants';
 
 const SearchBar = ({ searchKeyword, setSearchkeyword, setSearchedList }) => {
   const handleSearch = async (event) => {
@@ -12,17 +13,16 @@ const SearchBar = ({ searchKeyword, setSearchkeyword, setSearchedList }) => {
   };
 
   return (
-    <>
-      <form onSubmit={handleSearch}>
-        <input
-          type="text"
-          value={searchKeyword}
-          onChange={handleChange}
-          placeholder="&#128269; 질환명을 입력해주세요"
-        />
-        <button>검색</button>
-      </form>
-    </>
+    <form onSubmit={handleSearch}>
+      <input
+        type="text"
+        value={searchKeyword}
+        onChange={handleChange}
+        placeholder={SEARCH_PLACEHOLDER}
+        required
+      />
+      <button type="submit">{SEARCH}</button>
+    </form>
   );
 };
 

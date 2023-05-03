@@ -9,5 +9,9 @@
     "no-unused-vars": "warn",
     "no-empty": ["error", { "allowEmptyCatch": true }]
   },
-  "ignorePatterns": ["src/components/.keep", "src/pages/.keep"]
+  "ignorePatterns": [
+    "src/components/.keep",
+    "src/pages/.keep",
+    "src/styles/globals.css"
+  ]
 }

@@ -1,11 +1,18 @@
+import { useState } from 'react';
 import { useArrowKeyFocus } from '../hooks/useArrowKeyFocus';
 import { SearchWordItem } from './SearchWordItem';
 
 export const SearchInputForm = () => {
+  const [value, setValue] = useState('');
+
   return (
     <div>
       <div>
-        <input type="search" />
+        <input
+          type="search"
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+        />
         <button type="submit">submit</button>
       </div>
       <SearchWordList />

@@ -1,6 +1,6 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { SearchWordList } from './SearchWordList';
+import { useSearch } from '../hooks/useSearch';
 
 export const SearchInputForm = () => {
   const [value, setValue] = useState('');
@@ -22,27 +22,4 @@ export const SearchInputForm = () => {
       ) : null}
     </div>
   );
-};
-
-const useSearch = (word) => {
-  const [recommendationWords, setRecoomendationWoard] = useState();
-
-  const fetchRecommendationWords = async () => {
-    if (word.length > 0) {
-      const { data } = await axios.get(
-        `/api/v1/search-conditions/?name=${value}`
-      );
-      setRecoomendationWoard(data);
-    } else {
-      setRecoomendationWoard([]);
-    }
-  };
-
-  useEffect(() => {
-    fetchRecommendationWords();
-  }, [value]);
-
-  return {
-    recommendationWords,
-  };
 };

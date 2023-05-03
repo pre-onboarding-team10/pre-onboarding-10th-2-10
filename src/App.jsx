@@ -1,5 +1,7 @@
+import KeywordSearchContainer from './components/KeywordSearchContainer';
+
 const App = () => {
-  return <div className="App">Template</div>;
+  return <KeywordSearchContainer />;
 };
 
 export default App;

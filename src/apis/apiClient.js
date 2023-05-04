@@ -41,6 +41,7 @@ class ApiClient {
     let suggestions = getSuggestionsFromStorage(keyword);
     if (suggestions) return suggestions;
 
+    console.info('calling api');
     suggestions = await this.#get(`?name=${keyword}`);
     setSuggestionsInStorage(keyword, suggestions);
     return suggestions;

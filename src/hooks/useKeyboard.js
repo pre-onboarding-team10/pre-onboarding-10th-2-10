@@ -1,10 +1,9 @@
-const useKeyboard = (
-  suggestions,
-  focusedIndex,
-  setFocusedIndex,
-  setKeyword
-) => {
-  const handleKeyDown = (e) => {
+import { useState } from 'react';
+
+const useKeyboard = (setKeyword) => {
+  const [focusedIndex, setFocusedIndex] = useState(-1);
+
+  const handleKeyDown = (e, suggestions) => {
     if (e.key === 'ArrowDown') {
       e.preventDefault();
 
@@ -28,7 +27,7 @@ const useKeyboard = (
     }
   };
 
-  return handleKeyDown;
+  return { focusedIndex, setFocusedIndex, handleKeyDown };
 };
 
 export default useKeyboard;

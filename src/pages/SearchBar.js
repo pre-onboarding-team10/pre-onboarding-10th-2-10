@@ -25,7 +25,7 @@ const SearchBar = () => {
         handleKeyDown={handleKeyDown}
       />
 
-      {keyword && suggestions ? (
+      {keyword && suggestions.length !== 0 ? (
         <SuggestionList
           suggestions={suggestions}
           focusedIndex={focusedIndex}

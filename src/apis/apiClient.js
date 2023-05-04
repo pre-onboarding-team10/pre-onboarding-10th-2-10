@@ -1,4 +1,8 @@
 import axios from 'axios';
+import {
+  getSuggestionsFromStorage,
+  setSuggestionsInStorage,
+} from '../utils/storage';
 
 class ApiClient {
   #options = {};
@@ -34,7 +38,12 @@ class ApiClient {
   }
 
   async getKeyword(keyword) {
-    return await this.#get(`?name=${keyword}`);
+    let suggestions = getSuggestionsFromStorage(keyword);
+    if (suggestions) return suggestions;
+
+    suggestions = await this.#get(`?name=${keyword}`);
+    setSuggestionsInStorage(keyword, suggestions);
+    return suggestions;
   }
 }
 

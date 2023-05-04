@@ -20,7 +20,6 @@ class ApiCache {
     const apiResponse = await apiClient.getKeyword(keyword);
     const newResponse = await this.getHeaderResponse(apiResponse);
     cacheStorage.put(url, new Response(JSON.stringify(newResponse)));
-    console.log(newResponse.data);
     return newResponse.data;
   }
 

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { instance } from './instance';
 
 class ApiClient {
   #options = {};
@@ -21,7 +21,7 @@ class ApiClient {
     config.data = JSON.stringify(data);
 
     try {
-      const response = await axios.request(config);
+      const response = await instance.request(config);
       return response;
     } catch (e) {
       if (e.response) throw e.response;

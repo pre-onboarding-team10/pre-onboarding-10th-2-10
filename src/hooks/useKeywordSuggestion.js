@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import { apiClient } from '../apis/apiClient';
-import getCacheData from '../utils/getCacheData';
 import { suggestionsCache } from '../store/cache';
+import getCacheData from '../utils/getCacheData';
 
 const API_REQUEST_TIMER = 1000;
 
 const useKeywordSuggestion = (keyword) => {
   const [suggestions, setSuggestions] = useState([]);
+
+  console.log(suggestionsCache);
 
   useEffect(() => {
     const fetchSuggestions = async () => {
@@ -50,6 +52,10 @@ const useKeywordSuggestion = (keyword) => {
     const getSuggestions = async () => {
       let data = getCacheData(suggestionsCache, keyword);
 
+      if (data) {
+        setSuggestions(data);
+      }
+
       if (!data) {
         data = await fetchSuggestions(); // Fetch new data
       }
@@ -66,9 +72,7 @@ const useKeywordSuggestion = (keyword) => {
       //   }
     }, API_REQUEST_TIMER);
 
-    return () => {
-      clearTimeout(timeout);
-    };
+    return () => clearTimeout(timeout);
   }, [keyword]);
 
   return [suggestions];

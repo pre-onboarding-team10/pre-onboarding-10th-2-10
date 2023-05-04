@@ -1,6 +1,5 @@
+import { CACHE_EXPIRATION_TIME } from '../store/cache';
 const getCacheData = (cache, keyword) => {
-  const CACHE_EXPIRATION_TIME = 5000;
-
   // 역할: 저장된 캐쉬를 반환한다
   /** 단계
    * 1. 해당 키워드를 사용해서 데이터가 캐싱되어있는지 확인한다.

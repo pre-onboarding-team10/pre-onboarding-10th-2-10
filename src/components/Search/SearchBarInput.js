@@ -1,11 +1,12 @@
+const PLACEHOLDERTEXT = '질환명을 입력해 주세요';
 const SearchBarInput = ({ keyword, handleInputChange, handleKeyDown }) => {
   return (
     <input
-      type="text"
+      type="search"
       value={keyword}
       onChange={handleInputChange}
       onKeyDown={handleKeyDown}
-      placeholder="search"
+      placeholder={PLACEHOLDERTEXT}
     />
   );
 };

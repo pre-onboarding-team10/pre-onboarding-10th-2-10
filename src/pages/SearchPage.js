@@ -2,10 +2,9 @@ import { useState } from 'react';
 import useKeywordSuggestion from '../hooks/useKeywordSuggestion';
 import useInputChange from '../hooks/useInputChange';
 import useKeyboard from '../hooks/useKeyboard';
-import SuggestionList from '../components/SuggestionList';
-import SearchTitle from '../components/SearchTitle';
-import Container from '../components/Container';
-import SearchBar from '../components/SearchBar';
+import { SuggestionList, EmptyList } from '../components/Suggestion';
+import { Container, Title } from '../components/Common/';
+import { SearchBar } from '../components/Search';
 
 const SearchPage = () => {
   const [focusedIndex, setFocusedIndex] = useState(-1);
@@ -21,21 +20,21 @@ const SearchPage = () => {
 
   return (
     <Container>
-      <SearchTitle />
+      <Title />
       <SearchBar
         keyword={keyword}
         handleInputChange={handleInputChange}
         handleKeyDown={handleKeyDown}
       />
 
-      {keyword && suggestions.length > 0 ? (
+      {suggestions.length > 0 ? (
         <SuggestionList
           suggestions={suggestions}
           focusedIndex={focusedIndex}
           setFocusedIndex={setFocusedIndex}
         />
       ) : (
-        <div>검색어 없음</div>
+        <div>{keyword === '' ? '' : <EmptyList />}</div>
       )}
     </Container>
   );

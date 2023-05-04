@@ -1,3 +1,4 @@
+import './App.css';
 import SearchPage from './pages/SearchPage';
 
 function App() {

@@ -1,11 +1,12 @@
 import { useRef } from 'react';
 import SuggestionItem from './SuggestionItem';
+import SuggestionListTitle from './SuggestionListTitle';
 
 const SuggestionList = ({ suggestions, focusedIndex, setFocusedIndex }) => {
   const suggestionListRef = useRef(null);
-
   return (
     <ul ref={suggestionListRef}>
+      <SuggestionListTitle />
       {suggestions.map((suggestion, index) => (
         <SuggestionItem
           key={index}

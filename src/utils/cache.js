@@ -1,7 +1,7 @@
 import { apiClient } from '../apis/apiClient';
 
 const KEY = 'expire';
-const EXPIRETIME = 60 * 1000; //1분
+const EXPIRETIME = 10 * 1000; //1분
 
 export function createFetchResponse(axiosResponse) {
   const { data, status, statusText, headers } = axiosResponse;
@@ -38,8 +38,9 @@ export async function putCacheStorage(cacheStorage, keyword, url) {
 
 export async function getCacheData(cacheStorage, keyword, url) {
   const responseCache = await cacheStorage.match(url);
-  const expiredTimeBoolean = isExpiredTime(responseCache);
-  return expiredTimeBoolean
-    ? responseCache.json()
-    : putCacheStorage(cacheStorage, keyword, URL);
+  const expiredTimeBoolean = await isExpiredTime(responseCache);
+  if (expiredTimeBoolean) {
+    await cacheStorage.delete(url);
+    return await putCacheStorage(cacheStorage, keyword, url);
+  } else return responseCache.json();
 }

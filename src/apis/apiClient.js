@@ -5,6 +5,11 @@ class ApiClient {
 
   constructor(options) {
     this.#options.HOST = options.HOST.replace(/(.*)(\/$)/, '$1');
+
+    axios.interceptors.request.use((requestConfig) => {
+      console.info('calling api');
+      return requestConfig;
+    });
   }
 
   async #request(method, path, data) {

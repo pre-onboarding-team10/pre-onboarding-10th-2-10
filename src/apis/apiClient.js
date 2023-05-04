@@ -1,7 +1,9 @@
 import axios from 'axios';
+import { getCacheData, hasCacheKey, putCacheStorage } from '../utils/cache';
 
 const BASE_URL = 'https://api.clinicaltrialskorea.com/';
 const API_VERSION = 'api/v1/';
+
 class ApiClient {
   #options = {};
 
@@ -38,25 +40,10 @@ class ApiClient {
   async getCachedKeywords(keyword) {
     const URL = `${BASE_URL}${API_VERSION}search-conditions/?name=${keyword}`;
     const cacheStorage = await caches.open('keyword');
-    const responseCache = await cacheStorage.match(URL);
+    const cacheBoolean = await hasCacheKey(cacheStorage, URL);
 
-    try {
-      if (responseCache) return await responseCache.json();
-      else {
-        const { data, status, statusText, headers } = await this.getKeywords(
-          keyword
-        );
-        const fetchResponse = new Response(JSON.stringify(data), {
-          status,
-          statusText,
-          headers,
-        });
-        await cacheStorage.put(URL, fetchResponse);
-        return data;
-      }
-    } catch (err) {
-      alert(err);
-    }
+    if (cacheBoolean) return getCacheData(cacheStorage, keyword, URL);
+    else return putCacheStorage(cacheStorage, keyword, URL);
   }
 
   async getKeywords(keyword) {

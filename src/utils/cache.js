@@ -1,5 +1,4 @@
-const CACHE_PREFIX = 'cache_';
-const EXPIRATION_TIME_IN_MS = 5000;
+import { CACHE_PREFIX, EXPIRATION_TIME_IN_MS } from '../constants/constants';
 
 const getCacheKey = (key) => {
   return CACHE_PREFIX + key;

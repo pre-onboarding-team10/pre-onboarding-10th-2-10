@@ -47,6 +47,7 @@ class ApiClient {
   }
 
   async getKeywords(keyword) {
+    console.info('calling api');
     return await this.#get(`search-conditions/?name=${keyword}`);
   }
 }

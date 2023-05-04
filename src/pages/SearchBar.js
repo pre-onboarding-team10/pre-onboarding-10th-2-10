@@ -10,6 +10,7 @@ const SearchBar = () => {
   const [keyword, handleInputChange, setKeyword] = useInputChange();
   const [suggestions] = useKeywordSuggestion(keyword);
 
+  console.log(keyword);
   const handleKeyDown = useKeyboard(
     suggestions,
     focusedIndex,

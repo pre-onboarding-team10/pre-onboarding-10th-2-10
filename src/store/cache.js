@@ -1,0 +1,3 @@
+const suggestionsCache = {};
+
+export { suggestionsCache };

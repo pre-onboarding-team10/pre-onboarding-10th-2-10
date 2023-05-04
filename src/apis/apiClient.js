@@ -22,7 +22,7 @@ class ApiClient {
 
     try {
       const response = await axios.request(config);
-      return response;
+      return response.data;
     } catch (e) {
       if (e.response) throw e.response;
       throw e;

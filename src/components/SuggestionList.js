@@ -4,7 +4,7 @@ const SuggestionList = ({ suggestions, focusedIndex, setFocusedIndex }) => {
   const suggestionListRef = useRef(null);
   return (
     <ul ref={suggestionListRef}>
-      {suggestions.map((suggestion, index) => (
+      {suggestions?.map((suggestion, index) => (
         <li
           key={suggestion.id}
           style={index === focusedIndex ? { backgroundColor: '#ccc' } : {}}

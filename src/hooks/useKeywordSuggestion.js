@@ -18,7 +18,8 @@ const useKeywordSuggestion = (keyword) => {
   }, [keyword]);
 
   useEffect(() => {
-    fetchSuggestions();
+    const delay = setTimeout(() => fetchSuggestions(), 200);
+    return () => clearTimeout(delay);
   }, [fetchSuggestions]);
 
   return [suggestions];

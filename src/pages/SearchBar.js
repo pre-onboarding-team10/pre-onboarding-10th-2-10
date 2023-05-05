@@ -38,9 +38,7 @@ const SearchBar = () => {
         ) : (
           keyword && (
             <div className="none-suggestion">
-              <span className="none-suggestion-text">
-                검색 결과가 없습니다.
-              </span>
+              <div className="none-suggestion-text">검색 결과가 없습니다.</div>
             </div>
           )
         )}

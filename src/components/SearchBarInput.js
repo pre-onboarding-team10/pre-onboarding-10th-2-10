@@ -8,6 +8,17 @@ const SearchBarInput = ({ keyword, handleInputChange, handleKeyDown }) => {
       onChange={handleInputChange}
       onKeyDown={handleKeyDown}
       placeholder="search"
+      style={{
+        width: '320px',
+        boxSizing: 'border-box',
+        height: '70px',
+        borderRadius: '42px',
+        border: 'none',
+        fontSize: '16px',
+        fontWeight: '400',
+        lineHeight: '1.6',
+        padding: '12px 20px',
+      }}
     />
   );
 };

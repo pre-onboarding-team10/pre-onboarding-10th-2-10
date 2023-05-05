@@ -18,7 +18,7 @@ const SearchBar = () => {
   );
 
   return (
-    <>
+    <div>
       <SearchBarInput
         keyword={keyword}
         handleInputChange={handleInputChange}
@@ -32,7 +32,7 @@ const SearchBar = () => {
           setFocusedIndex={setFocusedIndex}
         />
       ) : null}
-    </>
+    </div>
   );
 };
 

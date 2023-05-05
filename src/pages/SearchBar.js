@@ -10,7 +10,7 @@ const SearchBar = () => {
   const [keyword, handleInputChange, setKeyword] = useInputChange();
   const [suggestions] = useKeywordSuggestion(keyword);
 
-  const handleKeyDown = useKeyboard(
+  const { handleKeyDown, setIsComposing } = useKeyboard(
     suggestions,
     focusedIndex,
     setFocusedIndex,
@@ -23,6 +23,8 @@ const SearchBar = () => {
         keyword={keyword}
         handleInputChange={handleInputChange}
         handleKeyDown={handleKeyDown}
+        onCompositionStart={() => setIsComposing(true)}
+        onCompositionEnd={() => setIsComposing(false)}
       />
       {keyword && (
         <SuggestionList

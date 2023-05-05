@@ -1,10 +1,16 @@
+import { useState } from 'react';
+
 const useKeyboard = (
   suggestions,
   focusedIndex,
   setFocusedIndex,
   setKeyword
 ) => {
+  const [isComposing, setIsComposing] = useState(false);
+
   const handleKeyDown = (e) => {
+    if (isComposing) return;
+
     if (e.key === 'ArrowDown') {
       e.preventDefault();
 
@@ -28,7 +34,7 @@ const useKeyboard = (
     }
   };
 
-  return handleKeyDown;
+  return { handleKeyDown, setIsComposing };
 };
 
 export default useKeyboard;

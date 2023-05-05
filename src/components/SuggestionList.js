@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import searchIcon from '../assets/searchIcon';
 
 const SuggestionList = ({ suggestions, focusedIndex, setFocusedIndex }) => {
   const suggestionListRef = useRef(null);
@@ -10,6 +11,7 @@ const SuggestionList = ({ suggestions, focusedIndex, setFocusedIndex }) => {
         {suggestions.length > 0 ? (
           suggestions.map((suggestion, index) => (
             <li key={index} onClick={() => setFocusedIndex(index)}>
+              {searchIcon}
               {suggestion.name}
             </li>
           ))

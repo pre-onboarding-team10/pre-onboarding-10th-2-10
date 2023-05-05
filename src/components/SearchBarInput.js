@@ -9,7 +9,7 @@ const SearchBarInput = ({ keyword, handleInputChange, handleKeyDown }) => {
         value={keyword}
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
-        placeholder="search"
+        placeholder="질환명을 입력해 주세요."
       />
       <button>{searchIcon}</button>
     </div>

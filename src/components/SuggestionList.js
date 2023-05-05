@@ -5,12 +5,16 @@ const SuggestionList = ({ suggestions, focusedIndex, setFocusedIndex }) => {
   const suggestionListRef = useRef(null);
 
   return (
-    <div>
+    <div className="search__search-list">
       <span>추천 검색어</span>
       <ul ref={suggestionListRef}>
         {suggestions.length > 0 ? (
           suggestions.map((suggestion, index) => (
-            <li key={index} onClick={() => setFocusedIndex(index)}>
+            <li
+              key={index}
+              className={index === focusedIndex ? 'focus' : null}
+              onClick={() => setFocusedIndex(index)}
+            >
               {searchIcon}
               {suggestion.name}
             </li>

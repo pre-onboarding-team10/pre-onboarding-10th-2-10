@@ -18,7 +18,7 @@ const SearchBar = () => {
   );
 
   return (
-    <div>
+    <div className="search">
       <SearchBarInput
         keyword={keyword}
         handleInputChange={handleInputChange}

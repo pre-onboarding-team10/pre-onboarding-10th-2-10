@@ -3,7 +3,7 @@ import searchIcon from '../assets/searchIcon';
 
 const SearchBarInput = ({ keyword, handleInputChange, handleKeyDown }) => {
   return (
-    <div>
+    <div className="search__search-bar">
       <input
         type="text"
         value={keyword}

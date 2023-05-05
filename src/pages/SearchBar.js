@@ -18,23 +18,21 @@ const SearchBar = () => {
   );
 
   return (
-    <>
+    <div style={{ position: 'relative' }}>
       <SearchBarInput
         keyword={keyword}
         handleInputChange={handleInputChange}
         handleKeyDown={handleKeyDown}
       />
 
-      {keyword && suggestions.length > 0 ? (
+      {keyword ? (
         <SuggestionList
           suggestions={suggestions}
           focusedIndex={focusedIndex}
           setFocusedIndex={setFocusedIndex}
         />
-      ) : (
-        <div>검색어 없음</div>
-      )}
-    </>
+      ) : null}
+    </div>
   );
 };
 

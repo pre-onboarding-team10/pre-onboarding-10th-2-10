@@ -11,7 +11,7 @@ const SearchBarInput = ({
   return (
     <div className="search__search-bar">
       <input
-        type="text"
+        type="search"
         value={keyword}
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}

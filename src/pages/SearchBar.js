@@ -4,6 +4,7 @@ import useInputChange from '../hooks/useInputChange';
 import useKeyboard from '../hooks/useKeyboard';
 import SearchBarInput from '../components/SearchBarInput';
 import SuggestionList from '../components/SuggestionList';
+import '../styles/SearchBar.css';
 
 const SearchBar = () => {
   const [focusedIndex, setFocusedIndex] = useState(-1);
@@ -18,7 +19,11 @@ const SearchBar = () => {
   );
 
   return (
-    <>
+    <div className="container">
+      <section className="container__title">
+        <h1>국내 모든 임상시험 검색하고</h1>
+        <h1>온라인으로 참여하기</h1>
+      </section>
       <SearchBarInput
         keyword={keyword}
         handleInputChange={handleInputChange}
@@ -34,7 +39,7 @@ const SearchBar = () => {
       ) : (
         <div>검색어 없음</div>
       )}
-    </>
+    </div>
   );
 };
 

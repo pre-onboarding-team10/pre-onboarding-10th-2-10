@@ -1,0 +1,28 @@
+.searchBarInput {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
+  height: 60px;
+}
+
+.searchBarInput__input {
+  width: 80%;
+  height: 100%;
+  border-radius: 50px 0 0 50px;
+  padding: 0 20px;
+  border: none;
+  outline: none;
+}
+
+.searchBarInput__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: large;
+  color: white;
+  border-radius: 0 50px 50px 0;
+  background-color: #367ae0;
+  width: 20%;
+  height: 100%;
+}

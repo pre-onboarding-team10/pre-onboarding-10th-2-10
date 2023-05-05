@@ -10,7 +10,7 @@ const useKeywordSuggestion = (keyword) => {
       try {
         if (name) {
           const response = await apiClient.getKeyword(name);
-          setSuggestions(response.data);
+          setSuggestions(response.data.slice(0, 7));
         } else {
           setSuggestions([]);
         }

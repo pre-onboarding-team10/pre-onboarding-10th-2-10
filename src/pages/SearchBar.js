@@ -18,7 +18,7 @@ const SearchBar = () => {
   );
 
   return (
-    <div>
+    <div style={{ position: 'relative' }}>
       <SearchBarInput
         keyword={keyword}
         handleInputChange={handleInputChange}

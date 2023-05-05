@@ -11,6 +11,8 @@ const SearchBar = () => {
   const [keyword, handleInputChange, setKeyword] = useInputChange();
   const [suggestions] = useKeywordSuggestion(keyword);
 
+  const MAIN_TITLE = '국내 모든 임상시험 검색하고 온라인으로 참여하기';
+
   const handleKeyDown = useKeyboard(
     suggestions,
     focusedIndex,
@@ -20,7 +22,7 @@ const SearchBar = () => {
 
   return (
     <>
-      <h2>국내 모든 임상시험 검색하고 온라인으로 참여하기</h2>
+      <h2>{MAIN_TITLE}</h2>
       <div className="container">
         <FaSearch className="search-icon__input" />
         <SearchBarInput

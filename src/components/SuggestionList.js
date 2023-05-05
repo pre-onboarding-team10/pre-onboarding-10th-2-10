@@ -13,7 +13,7 @@ const SuggestionList = ({
     <ul ref={suggestionListRef}>
       <div className="suggestion__title">추천검색어</div>
       {keyword && suggestions.length > 0 ? (
-        suggestions.map((suggestion, index) => (
+        suggestions.slice(0, 7).map((suggestion, index) => (
           <li
             key={index}
             style={index === focusedIndex ? { backgroundColor: '#ccc' } : {}}

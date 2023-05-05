@@ -1,0 +1,60 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 70px;
+  margin-bottom: 5px;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  width: 550px;
+  height: 100%;
+  border-radius: 50px;
+  overflow: hidden;
+  background: white;
+  justify-content: space-between;
+  border: 2px solid white;
+}
+
+.input-container:focus-within {
+  border-color: #017be8;
+  outline: none;
+}
+
+.search-input {
+  width: 90%;
+  font-size: 17px;
+  padding: 8px 30px;
+  padding-top: 12px;
+  outline: none;
+  border: none;
+  background: none;
+}
+
+.search-btn {
+  display: grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  background: #007be9;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  margin-right: 16px;
+}
+
+.search-input::placeholder {
+  background-image: url(https://cdn1.iconfinder.com/data/icons/hawcons/32/698627-icon-111-search-256.png);
+  background-position: 13px left;
+  background-size: contain;
+  background-repeat: no-repeat;
+  color: #b0b8bf;
+  text-indent: 32px;
+}
+
+.search-input:focus::-webkit-input-placeholder {
+  opacity: 0;
+}

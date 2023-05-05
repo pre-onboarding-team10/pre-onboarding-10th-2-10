@@ -7,7 +7,6 @@ const SuggestionItem = ({
   const isFocused = index === focusedIndex;
   return (
     <li
-      key={suggestion.id}
       className={`suggestion-item ${isFocused && 'suggestion--focused'}`}
       onClick={() => setFocusedIndex(index)}
     >

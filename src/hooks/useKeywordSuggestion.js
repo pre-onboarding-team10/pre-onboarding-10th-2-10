@@ -25,10 +25,6 @@ const useKeywordSuggestion = (keyword) => {
     fetchSuggestions(keyword);
   }, [keyword]);
 
-  useEffect(() => {
-    fetchSuggestions(keyword);
-  }, [keyword]);
-
   return [suggestions];
 };
 

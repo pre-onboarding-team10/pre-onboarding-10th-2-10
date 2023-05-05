@@ -21,6 +21,7 @@ const SuggestionList = ({ suggestions, focusedIndex, setFocusedIndex }) => {
       {suggestions.length <= MAX_SUGGESTIONS
         ? suggestions.map((suggestion, index) => (
             <SuggestionItem
+              key={suggestion.id}
               suggestion={suggestion}
               index={index}
               focusedIndex={focusedIndex}
@@ -29,6 +30,7 @@ const SuggestionList = ({ suggestions, focusedIndex, setFocusedIndex }) => {
           ))
         : renderedSuggestions.map((suggestion, index) => (
             <SuggestionItem
+              key={suggestion.id}
               suggestion={suggestion}
               index={startIndex + index}
               focusedIndex={focusedIndex}

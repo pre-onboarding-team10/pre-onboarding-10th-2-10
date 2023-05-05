@@ -7,15 +7,19 @@ const SuggestionList = ({ suggestions, focusedIndex, setFocusedIndex }) => {
     <div>
       <span>추천 검색어</span>
       <ul ref={suggestionListRef}>
-        {suggestions.map((suggestion, index) => (
-          <li
-            key={index}
-            style={index === focusedIndex ? { backgroundColor: '#ccc' } : {}}
-            onClick={() => setFocusedIndex(index)}
-          >
-            {suggestion.name}
-          </li>
-        ))}
+        {suggestions.length > 0 ? (
+          suggestions.map((suggestion, index) => (
+            <li
+              key={index}
+              style={index === focusedIndex ? { backgroundColor: '#ccc' } : {}}
+              onClick={() => setFocusedIndex(index)}
+            >
+              {suggestion.name}
+            </li>
+          ))
+        ) : (
+          <li>검색어 없음</li>
+        )}
       </ul>
     </div>
   );

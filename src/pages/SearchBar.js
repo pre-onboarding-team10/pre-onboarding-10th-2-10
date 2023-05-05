@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import useKeywordSuggestion from '../hooks/useKeywordSuggestion';
-import useInputChange from '../hooks/useInputChange';
-import useKeyboard from '../hooks/useKeyboard';
 import SearchBarInput from '../components/SearchBarInput';
 import SuggestionList from '../components/SuggestionList';
+import useInputChange from '../hooks/useInputChange';
+import useKeyboard from '../hooks/useKeyboard';
+import useKeywordSuggestion from '../hooks/useKeywordSuggestion';
 
 const SearchBar = () => {
   const [focusedIndex, setFocusedIndex] = useState(-1);
@@ -18,23 +18,20 @@ const SearchBar = () => {
   );
 
   return (
-    <>
+    <div>
       <SearchBarInput
         keyword={keyword}
         handleInputChange={handleInputChange}
         handleKeyDown={handleKeyDown}
       />
-
-      {keyword && suggestions.length > 0 ? (
+      {keyword && (
         <SuggestionList
           suggestions={suggestions}
           focusedIndex={focusedIndex}
           setFocusedIndex={setFocusedIndex}
         />
-      ) : (
-        <div>검색어 없음</div>
       )}
-    </>
+    </div>
   );
 };
 

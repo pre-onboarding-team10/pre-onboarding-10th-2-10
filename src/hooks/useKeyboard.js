@@ -5,6 +5,8 @@ const useKeyboard = (
   setKeyword
 ) => {
   const handleKeyDown = (e) => {
+    if (!suggestions || suggestions.length === 0) return;
+
     if (e.key === 'ArrowDown') {
       e.preventDefault();
 

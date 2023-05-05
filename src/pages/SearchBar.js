@@ -4,6 +4,7 @@ import useInputChange from '../hooks/useInputChange';
 import useKeyboard from '../hooks/useKeyboard';
 import SearchBarInput from '../components/SearchBarInput';
 import SuggestionList from '../components/SuggestionList';
+import { FaSearch } from 'react-icons/fa';
 
 const SearchBar = () => {
   const [focusedIndex, setFocusedIndex] = useState(-1);
@@ -19,21 +20,25 @@ const SearchBar = () => {
 
   return (
     <>
-      <SearchBarInput
-        keyword={keyword}
-        handleInputChange={handleInputChange}
-        handleKeyDown={handleKeyDown}
-      />
+      <h2>국내 모든 임상시험 검색하고 온라인으로 참여하기</h2>
+      <div className="container">
+        <FaSearch className="search-icon__input" />
+        <SearchBarInput
+          keyword={keyword}
+          handleInputChange={handleInputChange}
+          handleKeyDown={handleKeyDown}
+        />
+        <button>검색</button>
+      </div>
 
-      {keyword && suggestions.length > 0 ? (
+      {keyword ? (
         <SuggestionList
           suggestions={suggestions}
           focusedIndex={focusedIndex}
           setFocusedIndex={setFocusedIndex}
+          keyword={keyword}
         />
-      ) : (
-        <div>검색어 없음</div>
-      )}
+      ) : null}
     </>
   );
 };

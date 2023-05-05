@@ -12,7 +12,7 @@ const SuggestionList = ({
   return (
     <ul ref={suggestionListRef}>
       <div className="suggestion__title">추천검색어</div>
-      {keyword ? (
+      {keyword && suggestions.length > 0 ? (
         suggestions.map((suggestion, index) => (
           <li
             key={index}

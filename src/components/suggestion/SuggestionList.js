@@ -13,8 +13,8 @@ const SuggestionList = ({ suggestions, focusedIndex, setFocusedIndex }) => {
   );
 
   useEffect(() => {
-    setFocusedIndex(-1);
-  }, [suggestions, setFocusedIndex]);
+    setFocusedIndex(-2);
+  }, [suggestions, setFocusedIndex, MAX_SUGGESTIONS]);
 
   return (
     <>

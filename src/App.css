@@ -1,0 +1,77 @@
+body {
+  background-color: #cae9ff;
+}
+.App {
+  display: flex;
+  flex-direction: column;
+  margin: 20px auto;
+  max-width: 600px;
+  padding: 10px;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  border-radius: 30px;
+}
+h2 {
+  font-size: 30px;
+  text-align: center;
+  width: 430px;
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+input {
+  width: 100%;
+  font-weight: 400;
+  padding-left: 30px;
+  outline: none;
+  border: none;
+  padding: 20px 20px 20px 0px;
+}
+ul {
+  background-color: #fff;
+  list-style: none;
+  border-radius: 20px;
+  padding: 20px;
+  margin-top: 10px;
+  max-height: 300px;
+}
+li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 20px;
+  padding: 5px;
+  margin: 10px 0;
+}
+.suggestion__title {
+  color: grey;
+  font-size: 12px;
+}
+.search-icon {
+  margin-right: 10px;
+}
+.search-icon__input {
+  width: 50px;
+  padding: 22px 0px 0px 15px;
+}
+button {
+  background-color: #007be9;
+  color: #ffffff;
+  cursor: pointer;
+  border: none;
+  border-radius: 0 30px 30px 0;
+  padding: 20px;
+  width: 90px;
+}
+.empty-list {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 20px;
+  height: 20px;
+  margin-top: 10px;
+}

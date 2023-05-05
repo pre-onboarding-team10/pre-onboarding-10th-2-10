@@ -76,7 +76,7 @@ class ApiClient {
     const cachedData = this.#cache.get(cacheOptions.key);
 
     if (cachedData && !cachedData.isExpired) {
-      return cachedData.data.data;
+      return cachedData.data;
     } else {
       const data = await this.#request('GET', path);
       this.#cache.set(cacheOptions.key, data, cacheOptions.expireTimeInSec);
@@ -93,5 +93,5 @@ class ApiClient {
 }
 
 export const apiClient = new ApiClient({
-  HOST: '/api/v1/search-conditions/',
+  HOST: 'https://api.clinicaltrialskorea.com/api/v1/search-conditions/',
 });

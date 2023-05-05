@@ -3,11 +3,11 @@ import React from 'react';
 const SearchBarInput = ({ keyword, handleInputChange, handleKeyDown }) => {
   return (
     <input
-      type="text"
+      type="search"
       value={keyword}
       onChange={handleInputChange}
       onKeyDown={handleKeyDown}
-      placeholder="search"
+      placeholder="질환명을 입력해주세요"
     />
   );
 };

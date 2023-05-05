@@ -1,5 +1,6 @@
 import React from 'react';
 import SearchBar from './pages/SearchBar';
+import './App.css';
 
 function App() {
   return (

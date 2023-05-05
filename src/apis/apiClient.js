@@ -1,5 +1,5 @@
 import axios from 'axios';
-// TODO: extract to a separate file
+
 class Cache {
   #dataMap = {};
   #expireTimeInSec;
@@ -93,5 +93,5 @@ class ApiClient {
 }
 
 export const apiClient = new ApiClient({
-  HOST: '/api/v1/search-conditions/',
+  HOST: 'https://api.clinicaltrialskorea.com/api/v1/search-conditions/',
 });

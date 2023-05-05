@@ -4,7 +4,7 @@ const SuggestionList = ({ suggestions, focusedIndex, setFocusedIndex }) => {
   const suggestionListRef = useRef(null);
 
   return (
-    <ul ref={suggestionListRef}>
+    <ul ref={suggestionListRef} className="suggestion">
       {suggestions.map((suggestion, index) => (
         <li
           key={index}
